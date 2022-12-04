@@ -38,9 +38,13 @@ function showTemp(response) {
   let weatherDescrip = document.querySelector("h5");
   let aktuellTown = document.querySelector("#searching-town");
   let emoji = document.querySelector("#emoji");
+  let humidity = document.querySelector("#humidity");
+  let windSpeed = document.querySelector("#wind-speed");
   aktuellTown.innerHTML = response.data.name;
   weatherDescrip.innerHTML = response.data.weather[0].description;
   currentTemp.innerHTML = temp;
+  humidity.innerHTML = Math.round(response.data.wind.speed);
+  windSpeed.innerHTML = response.data.main.humidity;
   emoji.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
