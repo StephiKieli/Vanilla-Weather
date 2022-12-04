@@ -26,6 +26,9 @@ button:hover {
   padding: 25px;
   max-width: 750px;
 }
+.date-time {
+  margin: 0px;
+}
 
 .search {
   max-width: 250px;
