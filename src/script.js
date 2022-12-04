@@ -45,6 +45,7 @@ function showTemp(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+  celsiusTemperatuer = response.data.main.temp;
 }
 
 function search(city) {
@@ -52,12 +53,6 @@ function search(city) {
   let units = "metric";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}&lang=de`;
   axios.get(url).then(showTemp);
-}
-
-function newTown(event) {
-  event.preventDefault();
-  let city = document.querySelector("#searching-input").value;
-  search(city);
 }
 
 function showPosition(position) {
@@ -70,28 +65,43 @@ function showPosition(position) {
   axios.get(url).then(showTemp);
 }
 
+function newTown(event) {
+  event.preventDefault();
+  let city = document.querySelector("#searching-input").value;
+  search(city);
+}
 function showcurrentTown() {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
-let searchingTown = document.querySelector("#searching-form");
-let currentTown = document.querySelector("#current");
-
-searchingTown.addEventListener("submit", newTown);
-currentTown.addEventListener("click", showcurrentTown);
-
-search("Paris");
-
 function showFahrenheit(event) {
-  let unitF = document.querySelector("#aktuell-temp");
-  unitF.innerHTML = "70";
+  event.preventDefault();
+  celsius.classList.remove("aktiv");
+  fahrenheit.classList.add("aktiv");
+  let currentTemp = document.querySelector("#aktuell-temp");
+  let fahrenheitTemperuature = (celsiusTemperatuer * 9) / 5 + 32;
+  currentTemp.innerHTML = Math.round(fahrenheitTemperuature);
 }
 function showCelsius(event) {
-  let unitC = document.querySelector("#aktuell-temp");
-  unitC.innerHTML = "22";
+  event.preventDefault();
+  celsius.classList.add("aktiv");
+  fahrenheit.classList.remove("aktiv");
+  let currentTemp = document.querySelector("#aktuell-temp");
+  currentTemp.innerHTML = Math.round(celsiusTemperatuer);
 }
+
+let celsiusTemperatuer = null;
+
+let searchingTown = document.querySelector("#searching-form");
+searchingTown.addEventListener("submit", newTown);
+
+let currentTown = document.querySelector("#current");
+currentTown.addEventListener("click", showcurrentTown);
+
 let fahrenheit = document.querySelector("#fahrenheit-link");
 fahrenheit.addEventListener("click", showFahrenheit);
 
 let celsius = document.querySelector("#celsius-link");
 celsius.addEventListener("click", showCelsius);
+
+search("Paris");
