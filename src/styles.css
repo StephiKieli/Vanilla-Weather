@@ -54,11 +54,12 @@ button:hover {
   top: -50px;
   font-size: 16px;
 }
-.d-flex .aktiv {
-  color: black;
+.d-flex .link {
   cursor: default;
   text-decoration: none;
 }
-.d-flex .aktiv:hover {
+.d-flex .aktiv {
+  color: black;
+  cursor: default;
   text-decoration: none;
 }
