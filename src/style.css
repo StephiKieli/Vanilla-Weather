@@ -1,0 +1,60 @@
+h1 {
+  font-size: 90px;
+  max-width: 150px;
+  margin: 0px;
+}
+p {
+  font-size: 35px;
+}
+h5 {
+  font-size: 45px;
+  font-size: 23px;
+  font-weight: normal;
+}
+li {
+  list-style-type: none;
+}
+button {
+  border-radius: 5px;
+}
+button:hover {
+  cursor: pointer;
+}
+.weather-app {
+  display: block;
+  margin: 0 auto;
+  padding: 25px;
+  max-width: 750px;
+}
+
+.search {
+  max-width: 250px;
+}
+.days {
+  font-size: 15px;
+
+  margin: 10px auto;
+  padding: 7px;
+}
+.unit {
+  margin: 20px 0px;
+  padding: 0px 22px;
+}
+.temp {
+  padding: 0px 0px 0px 12px;
+}
+.townInput {
+  padding: 25px 0px;
+}
+.emoji {
+  padding: 10px 0px;
+}
+.d-flex strong {
+  font-size: 85px;
+  font-weight: normal;
+}
+.d-flex .units {
+  position: relative;
+  top: -50px;
+  font-size: 16px;
+}
