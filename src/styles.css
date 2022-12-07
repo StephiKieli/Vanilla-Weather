@@ -33,15 +33,6 @@ button:hover {
 .search {
   max-width: 250px;
 }
-.days {
-  font-size: 15px;
-
-  margin: 10px auto;
-  padding: 7px;
-}
-.temp {
-  padding: 0px 0px 0px 12px;
-}
 .townInput {
   padding: 25px 0px;
   margin: 0px;
@@ -66,4 +57,22 @@ button:hover {
   color: black;
   cursor: default;
   text-decoration: none;
+}
+.weather-forecast {
+  text-align: center;
+}
+.weather-forecast-date {
+  color: darkgreen;
+  font-size: 16px;
+  opacity: 0.8;
+}
+.weather-forecast-temperature-max {
+  font-size: 14px;
+}
+.weather-forecast-temperature-min {
+  font-size: 12px;
+  opacity: 0.8;
+}
+.gitHubRef {
+  margin-top: 40px;
 }
