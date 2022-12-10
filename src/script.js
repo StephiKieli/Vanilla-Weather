@@ -32,6 +32,34 @@ if (dayTimeM < 10) {
   timeTodayM.innerHTML = dayTimeM;
 }
 
+function displayForcast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let forecastDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri"];
+
+  forecastDays.forEach(function (forecastDays) {
+    forecastHTML =
+      forecastHTML +
+      `
+            <div class="col-2">
+              <div class="weather-forecast-date">${forecastDays}</div>
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"
+                alt=""
+                width="42"
+              />
+              <div class="weather-forecast-temperature">
+                <span class="weather-forecast-temperature-max"> 18° </span>
+                <span class="weather-forecast-temperature-min"> 12° </span>
+              </div>
+            </div>
+    `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemp(response) {
   let temp = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector("#aktuell-temp");
@@ -107,5 +135,7 @@ fahrenheit.addEventListener("click", showFahrenheit);
 
 let celsius = document.querySelector("#celsius-link");
 celsius.addEventListener("click", showCelsius);
+
+displayForcast();
 
 search("Paris");
