@@ -32,7 +32,8 @@ if (dayTimeM < 10) {
   timeTodayM.innerHTML = dayTimeM;
 }
 
-function displayForcast() {
+function displayForcast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -59,6 +60,13 @@ function displayForcast() {
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "7059cb165caa3316bff682d263a01b1e";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForcast);
+}
 
 function showTemp(response) {
   let temp = Math.round(response.data.main.temp);
@@ -77,7 +85,10 @@ function showTemp(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
   celsiusTemperatuer = response.data.main.temp;
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
@@ -135,7 +146,5 @@ fahrenheit.addEventListener("click", showFahrenheit);
 
 let celsius = document.querySelector("#celsius-link");
 celsius.addEventListener("click", showCelsius);
-
-displayForcast();
 
 search("Paris");
